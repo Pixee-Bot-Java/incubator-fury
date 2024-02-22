@@ -20,6 +20,7 @@
 package org.apache.fury.util;
 
 import com.google.common.io.BaseEncoding;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -75,7 +76,7 @@ public class StringUtils {
   }
 
   public static String random(int size) {
-    return random(size, new Random());
+    return random(size, new SecureRandom());
   }
 
   public static String random(int size, int rand) {
