@@ -71,6 +71,7 @@
     <commons_codec.version>1.13</commons_codec.version>
     <fury.java.rootdir>${basedir}</fury.java.rootdir>
     <maven-spotless-plugin.version>2.41.1</maven-spotless-plugin.version>
+    <versions.java-security-toolkit>1.1.2</versions.java-security-toolkit>
   </properties>
 
   <dependencyManagement>
@@ -122,6 +123,11 @@
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>1.18.30</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-security-toolkit</artifactId>
+        <version>${versions.java-security-toolkit}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
