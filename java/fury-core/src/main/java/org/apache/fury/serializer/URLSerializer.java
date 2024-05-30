@@ -19,6 +19,8 @@
 
 package org.apache.fury.serializer;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.apache.fury.Fury;
@@ -39,7 +41,7 @@ public final class URLSerializer extends Serializer<URL> {
 
   public URL read(MemoryBuffer buffer) {
     try {
-      return new URL(fury.readString(buffer));
+      return Urls.create(fury.readString(buffer), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
     } catch (MalformedURLException e) {
       Platform.throwException(e);
       throw new IllegalStateException("unreachable");
