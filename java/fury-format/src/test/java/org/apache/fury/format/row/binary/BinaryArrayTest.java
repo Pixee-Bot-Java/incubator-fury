@@ -19,6 +19,7 @@
 
 package org.apache.fury.format.row.binary;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import org.apache.fury.format.row.binary.writer.BinaryArrayWriter;
 import org.apache.fury.format.type.DataTypes;
@@ -46,7 +47,7 @@ public class BinaryArrayTest {
   public void testAccessPerf() {
     int length = 10000;
     int[] arr = new int[length];
-    Random random = new Random();
+    Random random = new SecureRandom();
     for (int i = 0; i < length; i++) {
       arr[i] = random.nextInt();
     }

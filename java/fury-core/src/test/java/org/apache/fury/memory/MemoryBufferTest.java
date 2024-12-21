@@ -19,6 +19,7 @@
 
 package org.apache.fury.memory;
 
+import java.security.SecureRandom;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -162,7 +163,7 @@ public class MemoryBufferTest {
   @Test
   public void testSliceAsByteBuffer() {
     byte[] data = new byte[10];
-    new Random().nextBytes(data);
+    new SecureRandom().nextBytes(data);
     {
       MemoryBuffer buffer = MemoryUtils.wrap(data, 5, 5);
       assertEquals(buffer.sliceAsByteBuffer(), ByteBuffer.wrap(data, 5, 5));
