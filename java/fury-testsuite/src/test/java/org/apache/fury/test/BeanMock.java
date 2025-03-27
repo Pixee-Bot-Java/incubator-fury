@@ -26,6 +26,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Random;
@@ -69,23 +70,23 @@ public class BeanMock {
         }
         Class<?> writeType = writeMethod.getParameterTypes()[0];
         if (writeType.equals(Boolean.class) || writeType.equals(boolean.class)) {
-          writeMethod.invoke(object, new Random().nextBoolean());
+          writeMethod.invoke(object, new SecureRandom().nextBoolean());
         } else if (writeType.equals(Byte.class) || writeType.equals(byte.class)) {
-          writeMethod.invoke(object, (byte) (new Random().nextInt(256) - 128));
+          writeMethod.invoke(object, (byte) (new SecureRandom().nextInt(256) - 128));
         } else if (writeType.equals(Character.class) || writeType.equals(char.class)) {
-          writeMethod.invoke(object, (char) (new Random().nextInt(26) + 'a'));
+          writeMethod.invoke(object, (char) (new SecureRandom().nextInt(26) + 'a'));
         } else if (writeType.equals(Double.class) || writeType.equals(double.class)) {
           writeMethod.invoke(object, Math.random());
         } else if (writeType.equals(Float.class) || writeType.equals(float.class)) {
-          writeMethod.invoke(object, new Random().nextFloat());
+          writeMethod.invoke(object, new SecureRandom().nextFloat());
         } else if (writeType.equals(Integer.class) || writeType.equals(int.class)) {
-          writeMethod.invoke(object, new Random().nextInt());
+          writeMethod.invoke(object, new SecureRandom().nextInt());
         } else if (writeType.equals(Long.class) || writeType.equals(long.class)) {
-          writeMethod.invoke(object, new Random().nextLong());
+          writeMethod.invoke(object, new SecureRandom().nextLong());
         } else if (writeType.equals(Short.class) || writeType.equals(short.class)) {
-          writeMethod.invoke(object, (short) (new Random().nextInt(65535) - 32768));
+          writeMethod.invoke(object, (short) (new SecureRandom().nextInt(65535) - 32768));
         } else if (writeType.equals(String.class)) {
-          writeMethod.invoke(object, UUID.randomUUID().toString() + new Random().nextLong());
+          writeMethod.invoke(object, UUID.randomUUID().toString() + new SecureRandom().nextLong());
         } else if (writeType.isEnum()
             || writeType.isArray()
             || Collection.class.isAssignableFrom(writeType)

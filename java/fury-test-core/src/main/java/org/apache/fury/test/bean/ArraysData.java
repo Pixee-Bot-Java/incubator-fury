@@ -20,6 +20,7 @@
 package org.apache.fury.test.bean;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -38,7 +39,7 @@ public class ArraysData implements Serializable {
     ints = new int[arrLength];
     longs = new long[arrLength];
     doubles = new double[arrLength];
-    Random random = new Random();
+    Random random = new SecureRandom();
     random.nextBytes(bytes);
     for (int i = 0; i < arrLength; i++) {
       booleans[i] = random.nextBoolean();
